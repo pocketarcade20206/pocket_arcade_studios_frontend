@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { ExternalLink, Star, Trophy, CheckCircle2, ShieldCheck, Flame } from 'lucide-react';
 import { playClickSound } from '../utils/soundEffects';
+import useScrollReveal from '../utils/useScrollReveal';
 
 export default function GamesSection() {
   const [activeTab, setActiveTab] = useState('2048');
+  const [titleRef, isTitleRevealed] = useScrollReveal();
+  const [cardRef, isCardRevealed] = useScrollReveal();
 
   const miniGames = [
     {
@@ -58,7 +61,11 @@ export default function GamesSection() {
     <section id="games">
       <div className="container">
         {/* Section Title */}
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <div
+          ref={titleRef}
+          className={`reveal-slide-up ${isTitleRevealed ? 'revealed' : ''}`}
+          style={{ textAlign: 'center', marginBottom: '40px' }}
+        >
           <h2 className="section-title font-heading gold-gradient-text">
             Our Games
           </h2>
@@ -69,7 +76,8 @@ export default function GamesSection() {
 
         {/* SINGLE PLAY STORE-STYLE PRODUCT CARD FOR POCKET ARCADE */}
         <div
-          className="static-card"
+          ref={cardRef}
+          className={`static-card reveal-slide-up ${isCardRevealed ? 'revealed' : ''}`}
           style={{
             maxWidth: '1140px',
             margin: '0 auto',

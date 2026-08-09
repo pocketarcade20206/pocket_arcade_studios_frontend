@@ -23,22 +23,12 @@ export default function Footer() {
           textAlign: 'center',
         }}
       >
-        {/* Brand Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <img
-            src="/assets/game_app_icon.png"
-            alt="Pocket Arcade Studios"
-            style={{ width: '36px', height: '36px', borderRadius: '10px', border: '2px solid var(--accent)' }}
-          />
-          <span className="font-heading gold-gradient-text" style={{ fontSize: '1.2rem', fontWeight: 900 }}>
-            POCKET ARCADE STUDIOS
-          </span>
-        </div>
 
 
 
-        <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-dim)' }}>
-          &copy; 2026 <strong>Pocket Arcade Studios</strong>. All Rights Reserved. Built with passion for mobile arcade gamers.
+
+        <p style={{ margin: 0, fontSize: '0.85rem', color: '#FFFFFF' }}>
+          &copy; 2026 <strong style={{ color: '#FFFFFF' }}>Pocket Arcade Studios</strong>. All Rights Reserved. Built with passion for mobile arcade gamers.
         </p>
       </div>
     </footer>

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/soundEffects';
+import useScrollReveal from '../utils/useScrollReveal';
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
+  const [titleRef, isTitleRevealed] = useScrollReveal();
+  const [accordionRef, isAccordionRevealed] = useScrollReveal();
 
   const faqs = [
     {
@@ -36,7 +39,11 @@ export default function FAQSection() {
   return (
     <section id="faq">
       <div className="container" style={{ maxWidth: '840px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <div
+          ref={titleRef}
+          className={`reveal-slide-up ${isTitleRevealed ? 'revealed' : ''}`}
+          style={{ textAlign: 'center', marginBottom: '40px' }}
+        >
           <h2 className="section-title font-heading gold-gradient-text">
             Frequently Asked Questions
           </h2>
@@ -47,7 +54,11 @@ export default function FAQSection() {
         </div>
 
         {/* Accordion Container */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div
+          ref={accordionRef}
+          className={`reveal-slide-up ${isAccordionRevealed ? 'revealed' : ''}`}
+          style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+        >
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (

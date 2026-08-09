@@ -375,6 +375,86 @@ section {
     animation: floatSlow 4s infinite ease-in-out;
 }
 
+/* Scroll Reveal Classes */
+.reveal-fade {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+.reveal-fade.revealed {
+    opacity: 1;
+}
+
+.reveal-slide-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-slide-up.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-slide-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-slide-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Entry / Page Load Animations */
+.animate-load-fade {
+    opacity: 0;
+    animation: loadFadeIn 0.8s ease-out forwards;
+}
+
+.animate-load-slide-up {
+    opacity: 0;
+    animation: loadSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Delay classes */
+.delay-1 {
+    animation-delay: 0.1s;
+}
+.delay-2 {
+    animation-delay: 0.2s;
+}
+.delay-3 {
+    animation-delay: 0.3s;
+}
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes loadSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Responsive Queries */
 @media (max-width: 992px) {
     .section-title {

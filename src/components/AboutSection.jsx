@@ -1,8 +1,13 @@
 import React from 'react';
 import { Target, Shield, Zap, Feather, CheckCircle } from 'lucide-react';
 import { playHoverSound } from '../utils/soundEffects';
+import useScrollReveal from '../utils/useScrollReveal';
 
 export default function AboutSection() {
+  const [headerRef, isHeaderRevealed] = useScrollReveal();
+  const [profileRef, isProfileRevealed] = useScrollReveal();
+  const [pillarsRef, isPillarsRevealed] = useScrollReveal();
+
   const pillars = [
     {
       icon: <Target size={28} color="var(--accent)" />,
@@ -28,7 +33,11 @@ export default function AboutSection() {
 
   return (
     <section id="about" style={{ padding: '100px 0' }}>
-      <div className="container" style={{ textAlign: 'center', marginBottom: '48px' }}>
+      <div
+        ref={headerRef}
+        className={`container reveal-slide-up ${isHeaderRevealed ? 'revealed' : ''}`}
+        style={{ textAlign: 'center', marginBottom: '48px' }}
+      >
         <h2 className="section-title font-heading gold-gradient-text" style={{ margin: 0 }}>
           About Studio
         </h2>
@@ -45,7 +54,10 @@ export default function AboutSection() {
         }}
       >
         {/* Left Column: Company Profile & Mission */}
-        <div>
+        <div
+          ref={profileRef}
+          className={`reveal-slide-left ${isProfileRevealed ? 'revealed' : ''}`}
+        >
 
           <h3 
             style={{ 
@@ -95,6 +107,8 @@ export default function AboutSection() {
 
         {/* Right Column: 2x2 Core Pillars Grid */}
         <div
+          ref={pillarsRef}
+          className={`reveal-slide-right ${isPillarsRevealed ? 'revealed' : ''}`}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',

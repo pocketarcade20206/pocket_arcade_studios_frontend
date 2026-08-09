@@ -12,51 +12,29 @@ export default function HeroSection() {
       }}
     >
       <div className="container">
-        {/* Main Logo Container */}
-        <div style={{ marginBottom: '24px', display: 'inline-block', position: 'relative' }}>
-          <div
-            style={{
-              position: 'absolute',
-              inset: -10,
-              borderRadius: '40px',
-              background: 'radial-gradient(circle, rgba(251, 191, 36, 0.35) 0%, transparent 70%)',
-              filter: 'blur(16px)',
-              zIndex: 0,
-            }}
-          />
+        {/* Main Logo Container (Wrapped in h1 for SEO, responsive width) */}
+        <h1
+          className="animate-load-slide-up delay-1"
+          style={{ margin: '0 auto 24px auto', display: 'inline-block', width: '100%', maxWidth: '380px' }}
+        >
           <img
-            src="/assets/game_app_icon.png"
-            alt="Pocket Arcade Studios Logo"
-            className="animate-app-icon"
+            src="/assets/pocket arcade studios logo.png"
+            alt="Pocket Arcade Studios"
             style={{
               position: 'relative',
-              width: '140px',
-              height: '140px',
-              borderRadius: '34px',
-              border: '4px solid var(--accent)',
+              width: '100%',
+              height: 'auto',
+              aspectRatio: '1 / 1',
               objectFit: 'cover',
               zIndex: 1,
+              display: 'block',
             }}
           />
-        </div>
-
-        {/* Cinematic Main Title */}
-        <h1
-          className="font-heading gold-gradient-text"
-          style={{
-            fontSize: '3.4rem',
-            fontWeight: 900,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '12px',
-            lineHeight: 1.08,
-          }}
-        >
-          POCKET ARCADE STUDIOS
         </h1>
 
         {/* Tagline */}
         <p
+          className="animate-load-slide-up delay-2"
           style={{
             fontSize: '1.35rem',
             color: '#FFFFFF',
@@ -71,6 +49,7 @@ export default function HeroSection() {
         </p>
 
         <p
+          className="animate-load-slide-up delay-3"
           style={{
             fontSize: '1.08rem',
             color: 'var(--text-muted)',
