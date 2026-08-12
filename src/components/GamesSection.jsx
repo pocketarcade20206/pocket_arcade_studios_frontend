@@ -77,11 +77,10 @@ export default function GamesSection() {
         {/* SINGLE PLAY STORE-STYLE PRODUCT CARD FOR POCKET ARCADE */}
         <div
           ref={cardRef}
-          className={`static-card reveal-slide-up ${isCardRevealed ? 'revealed' : ''}`}
+          className={`static-card reveal-slide-up games-card ${isCardRevealed ? 'revealed' : ''}`}
           style={{
             maxWidth: '1140px',
             margin: '0 auto',
-            padding: '40px',
             background: 'rgba(15, 23, 42, 0.65)',
             border: '3px solid rgba(148, 163, 184, 0.2)',
             borderRadius: '28px',
@@ -92,6 +91,7 @@ export default function GamesSection() {
         >
           {/* APP HEADER BAR (Google Play Store Header Style) */}
           <div
+            className="games-card-header"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -102,41 +102,39 @@ export default function GamesSection() {
               borderBottom: '1px solid var(--border-color)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+            <div className="games-brand-row">
               <img
                 src="/assets/game_app_icon.png"
                 alt="Pocket Arcade Official App Icon"
-                style={{
-                  width: '100px',
-                  height: '100px',
-                  borderRadius: '26px',
-                  border: '3px solid var(--accent)',
-                  objectFit: 'cover',
-                  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.6)',
-                }}
+                className="games-logo"
               />
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                  <span
-                    style={{
-                      background: 'rgba(251, 191, 36, 0.15)',
-                      border: '1px solid var(--accent)',
-                      color: 'var(--accent)',
-                      padding: '4px 12px',
-                      borderRadius: '8px',
-                      fontSize: '0.75rem',
-                      fontWeight: 900,
-                      letterSpacing: '1.2px',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    MOBILE APP
-                  </span>
-                </div>
+              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: '6px' }}>
+                <span
+                  style={{
+                    background: 'rgba(251, 191, 36, 0.15)',
+                    border: '1px solid var(--accent)',
+                    color: 'var(--accent)',
+                    padding: '3px 8px',
+                    borderRadius: '6px',
+                    fontSize: '0.62rem',
+                    fontWeight: 900,
+                    letterSpacing: '1px',
+                    textTransform: 'uppercase',
+                    display: 'inline-block',
+                  }}
+                >
+                  MOBILE APP
+                </span>
 
                 <h3
                   className="font-heading"
-                  style={{ fontSize: '2.6rem', fontWeight: 900, color: '#FFF', marginBottom: '0', lineHeight: 1.1 }}
+                  style={{
+                    fontSize: 'clamp(1.8rem, 6vw, 2.7rem)',
+                    fontWeight: 900,
+                    color: '#FFF',
+                    marginBottom: '0',
+                    lineHeight: 1.15,
+                  }}
                 >
                   Pocket Arcade
                 </h3>
@@ -147,10 +145,10 @@ export default function GamesSection() {
               href="https://play.google.com/store/apps/details?id=com.pocketarcadestudios.pocketarcade"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
-              style={{ padding: '16px 36px', fontSize: '1.08rem' }}
+              className="btn-primary playstore-btn"
+              style={{ fontSize: 'clamp(0.9rem, 3vw, 1.05rem)' }}
             >
-              <ExternalLink size={22} /> Get on Google Play
+              <ExternalLink size={20} /> Get on Google Play
             </a>
           </div>
 
@@ -173,12 +171,7 @@ export default function GamesSection() {
 
             {/* Game Selector Tabs */}
             <div
-              style={{
-                display: 'flex',
-                gap: '12px',
-                flexWrap: 'wrap',
-                marginBottom: '24px',
-              }}
+              className="game-tabs-container"
             >
               {miniGames.map((game) => (
                 <button
@@ -187,6 +180,7 @@ export default function GamesSection() {
                     playClickSound();
                     setActiveTab(game.id);
                   }}
+                  className="game-tab-btn"
                   style={{
                     padding: '10px 20px',
                     borderRadius: '14px',
@@ -206,17 +200,9 @@ export default function GamesSection() {
 
             {/* Active Game Spotlight Detail Section */}
             <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
-                gap: '32px',
-                marginTop: '16px',
-                paddingTop: '0',
-              }}
+              className="games-spotlight-container"
             >
-              <div style={{ flex: '1 1 300px' }}>
+              <div className="games-spotlight-text">
                 <h4
                   className="font-heading"
                   style={{ fontSize: '1.8rem', fontWeight: 900, color: '#FFF', marginBottom: '10px' }}
@@ -228,10 +214,13 @@ export default function GamesSection() {
                   {activeGameObj.longDesc}
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '0' }}>
+                <div
+                  className="games-features-list"
+                  style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '0' }}
+                >
                   {activeGameObj.features.map((feat, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FFF', fontSize: '0.9rem', fontWeight: 600 }}>
-                      <CheckCircle2 size={16} color="var(--accent)" /> {feat}
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#FFF', fontSize: '0.9rem', fontWeight: 600 }}>
+                      <CheckCircle2 size={16} color="var(--accent)" style={{ flexShrink: 0 }} /> {feat}
                     </div>
                   ))}
                 </div>
@@ -239,15 +228,7 @@ export default function GamesSection() {
 
               {/* Game Spotlight Banner Only (Perfect Square) */}
               <div
-                style={{
-                  width: '240px',
-                  height: '240px',
-                  flexShrink: 0,
-                  borderRadius: '18px',
-                  overflow: 'hidden',
-                  border: '1px solid var(--border-color)',
-                  boxShadow: '0 16px 36px rgba(0, 0, 0, 0.5)',
-                }}
+                className="games-spotlight-image"
               >
                 <img
                   src={activeGameObj.banner}

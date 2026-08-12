@@ -31,7 +31,8 @@
 html {
     scroll-behavior: smooth;
     overscroll-behavior-y: none;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
     background-color: var(--dark);
 }
 
@@ -63,6 +64,8 @@ section {
     padding: 90px 0;
     position: relative;
     z-index: 2;
+    scroll-margin-top: 80px;
+    /* Offset for fixed header */
 }
 
 /* Ambient glow blobs */
@@ -344,19 +347,34 @@ section {
 
 /* Animations */
 @keyframes fadeInModal {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes scaleUpModal {
-    from { opacity: 0; transform: scale(0.9) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 @keyframes pulseGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
     }
+
     50% {
         box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
     }
@@ -367,8 +385,15 @@ section {
 }
 
 @keyframes floatSlow {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .animate-float {
@@ -380,6 +405,7 @@ section {
     opacity: 0;
     transition: opacity 0.8s ease-out;
 }
+
 .reveal-fade.revealed {
     opacity: 1;
 }
@@ -389,6 +415,7 @@ section {
     transform: translateY(40px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal-slide-up.revealed {
     opacity: 1;
     transform: translateY(0);
@@ -399,6 +426,7 @@ section {
     transform: translateX(-40px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal-slide-left.revealed {
     opacity: 1;
     transform: translateX(0);
@@ -409,6 +437,7 @@ section {
     transform: translateX(40px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal-slide-right.revealed {
     opacity: 1;
     transform: translateX(0);
@@ -429,19 +458,27 @@ section {
 .delay-1 {
     animation-delay: 0.1s;
 }
+
 .delay-2 {
     animation-delay: 0.2s;
 }
+
 .delay-3 {
     animation-delay: 0.3s;
 }
+
 .delay-4 {
     animation-delay: 0.4s;
 }
 
 @keyframes loadFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes loadSlideUp {
@@ -449,6 +486,7 @@ section {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -460,8 +498,10 @@ section {
     .section-title {
         font-size: 2.3rem;
     }
+
     section {
-        padding: 70px 0;
+        padding: 100px 0 70px 0;
+        scroll-margin-top: 75px;
     }
 }
 
@@ -469,12 +509,38 @@ section {
     .section-title {
         font-size: 1.9rem;
     }
+
+    section {
+        padding: 90px 0 60px 0;
+        scroll-margin-top: 65px;
+    }
+
     .glass-card {
         padding: 24px 20px;
         border-radius: 20px;
     }
+
     .modal-content {
         padding: 24px 18px;
+    }
+
+    /* Product card and button adjustments */
+    .games-card {
+        padding: 24px 20px !important;
+        border-radius: 20px !important;
+    }
+
+    .games-card-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .playstore-btn {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        justify-content: center;
     }
 }
 
@@ -482,8 +548,126 @@ section {
     .section-title {
         font-size: 1.65rem;
     }
-    .btn-primary, .btn-secondary {
+
+    .btn-primary,
+    .btn-secondary {
         width: 100%;
         padding: 13px 20px;
+    }
+}
+
+/* Horizontal scrollable tabs layout for mini-games on mobile */
+.game-tabs-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+}
+
+.game-tabs-container::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Chrome/Safari */
+}
+
+.game-tab-btn {
+    flex-shrink: 0;
+}
+
+/* Games Logo & Spotlight Layout overrides */
+.games-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 26px;
+    border: 3px solid var(--accent);
+    object-fit: cover;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.games-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    /* Spacing between logo and text for desktop */
+}
+
+.games-spotlight-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.games-spotlight-text {
+    flex: 1 1 300px;
+    order: 1;
+}
+
+.games-spotlight-image {
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    order: 2;
+}
+
+@media (max-width: 768px) {
+    .games-logo {
+        width: 76px !important;
+        height: 76px !important;
+        border-radius: 18px !important;
+        border-width: 2px !important;
+    }
+
+    .games-brand-row {
+        gap: 16px !important;
+        /* Tighter gap for mobile */
+    }
+
+    .games-spotlight-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .games-spotlight-text {
+        order: 2 !important;
+        /* Text second on mobile */
+        width: 100%;
+        text-align: center;
+    }
+
+    .games-spotlight-image {
+        order: 1 !important;
+        /* Image first on mobile */
+        width: 140px !important;
+        /* Smaller size on mobile */
+        height: 140px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+/* Subgames Feature Checklist Alignment */
+.games-features-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: left;
+}
+
+@media (min-width: 769px) {
+    .games-features-list {
+        margin: 0;
     }
 }
