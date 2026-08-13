@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Gamepad2, Users, Sparkles, Heart, Zap, Rocket } from 'lucide-react';
+import { Gamepad2, Users, Heart, Zap, Rocket } from 'lucide-react';
 import heroGraphics from '../assets/hero-graphics.png';
 
 export default function HeroSection() {
@@ -39,14 +39,6 @@ export default function HeroSection() {
       <div className="hero-main-container">
         {/* ===== LEFT — Text Content ===== */}
         <div className="hero-content">
-          {/* Welcome Badge */}
-          <div className="hero-anim hero-anim-1">
-            <span className="hero-welcome-badge">
-              <Sparkles size={14} />
-              WELCOME TO POCKET ARCADE STUDIOS
-            </span>
-          </div>
-
           {/* Main Headline */}
           <h1 className="hero-anim hero-anim-2 hero-headline">
             <span className="hero-headline-line1">SMALL GAMES.</span>
@@ -253,14 +245,33 @@ export default function HeroSection() {
           font-size: clamp(3.8rem, 7.5vw, 6.2rem);
           font-weight: 900;
           letter-spacing: 3px;
-          background: linear-gradient(135deg, #FBBF24 0%, #ce732dff 50%, #ce732dff 100%);
+          background: linear-gradient(
+            to right,
+            #F59E0B 0%,
+            #FBBF24 25%,
+            #FDE047 50%,
+            #FBBF24 75%,
+            #F59E0B 100%
+          );
+          background-size: 200% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          filter: drop-shadow(0 4px 16px rgba(217,119,6,0.35));
+          animation: textShine 6s linear infinite;
+          filter: drop-shadow(0 2px 8px rgba(251, 191, 36, 0.18))
+                  drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
           white-space: nowrap;
           text-transform: uppercase;
           line-height: 1.1;
+        }
+
+        @keyframes textShine {
+          0% {
+            background-position: 0% center;
+          }
+          100% {
+            background-position: -200% center;
+          }
         }
 
         .hero-description {
