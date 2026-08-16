@@ -125,6 +125,7 @@ export default function HeroSection() {
           position: absolute;
           border-radius: 50%;
           filter: blur(100px);
+          display: none;
         }
         .hero-glow-gold {
           width: 550px; height: 550px;
@@ -331,6 +332,7 @@ export default function HeroSection() {
           height: 80%;
           top: 50%; left: 50%;
           transform: translate(-50%, -50%);
+          display: none;
           background: radial-gradient(
             ellipse at center,
             rgba(56,189,248,0.12) 0%,
@@ -351,8 +353,8 @@ export default function HeroSection() {
           height: auto;
           object-fit: contain;
           animation: heroGraphicFloat 5s ease-in-out infinite;
-          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.45))
-                  drop-shadow(0 6px 14px rgba(56,189,248,0.10));
+          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.45));
+          mix-blend-mode: screen;
           will-change: transform;
         }
 

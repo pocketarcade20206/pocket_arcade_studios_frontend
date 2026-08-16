@@ -66,11 +66,11 @@ export default function Navbar() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: isScrolled ? 'rgba(13, 27, 65, 0.92)' : 'rgba(15, 23, 42, 0.35)',
+          background: 'rgba(13, 27, 65, 0.92)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          boxShadow: isScrolled ? '0 10px 30px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.05)' : 'none',
-          borderBottom: isScrolled ? '1px solid rgba(251, 191, 36, 0.25)' : '1px solid transparent',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
+          borderBottom: '1px solid rgba(251, 191, 36, 0.25)',
           transition: 'all 0.3s ease',
         }}
       >

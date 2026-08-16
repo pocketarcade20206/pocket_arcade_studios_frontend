@@ -642,6 +642,10 @@ section {
         order: 2 !important;
         /* Text second on mobile */
         width: 100%;
+        text-align: left;
+    }
+
+    .games-spotlight-text h4 {
         text-align: center;
     }
 
@@ -662,12 +666,6 @@ section {
     flex-direction: column;
     align-items: flex-start;
     width: fit-content;
-    margin: 0 auto;
+    margin: 0;
     text-align: left;
-}
-
-@media (min-width: 769px) {
-    .games-features-list {
-        margin: 0;
-    }
 }
