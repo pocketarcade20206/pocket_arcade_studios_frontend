@@ -145,10 +145,13 @@ export default function GamesSection() {
               href="https://play.google.com/store/apps/details?id=com.pocketarcadestudios.pocketarcade"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary playstore-btn"
-              style={{ fontSize: 'clamp(0.9rem, 3vw, 1.05rem)' }}
+              className="playstore-badge-link"
             >
-              <ExternalLink size={20} /> Get on Google Play
+              <img
+                src="/assets/google_play_badge.png"
+                alt="Get it on Google Play"
+                className="playstore-badge-img"
+              />
             </a>
           </div>
 
